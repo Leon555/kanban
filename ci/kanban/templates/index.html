@@ -1,0 +1,71 @@
+<html>
+  <head>
+    {% load bootstrap3 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <title>MSS CI</title>
+  </head>
+  
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-inverse navbar-fiexed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand">MSS CI Kanban System</a>
+        </div>
+    </nav>
+
+    <!-- PClint list-->
+    <div class="row" style="padding-top: 10px;">
+          <a class="navbar-brand">PCLint Info</a>
+      <div class="col-md-6">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Project</th><th>Build_Time</th><th>URL</th><th>error</th><th>warning</th><th>info</th><th>note</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for pclint in pclints %}
+              <tr>
+                <td>{{ pclint.project_name }}</td>
+                <td>{{ pclint.build_time }}</td>
+                <td>{{ pclint.project_url }}</td>
+                <td>{{ pclint.error }}</td>
+                <td>{{ pclint.warning }}</td>
+                <td>{{ pclint.info }}</td>
+                <td>{{ pclint.note }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- CodeDex list-->
+    <div class="row" >
+          <a class="navbar-brand">CodeDex Info</a>
+      <div class="col-md-6">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Project</th><th>Build_Time</th><th>URL</th><th>error</th><th>warning</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for cdx in codedexs %}
+              <tr>
+                <td>{{ cdx.project_name }}</td>
+                <td>{{ cdx.build_time }}</td>
+                <td>{{ cdx.project_url }}</td>
+                <td>{{ cdx.error }}</td>
+                <td>{{ cdx.warning }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </body>
+</html>
